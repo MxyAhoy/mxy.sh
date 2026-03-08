@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>mxy.sh</title>
+
+<style>
+
+body {
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, sans-serif;
+    background: #f5f7fa;
+    margin: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 60px auto;
+    padding: 40px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+h1 {
+    margin-top: 0;
+    font-size: 32px;
+}
+
+h2 {
+    margin-top: 40px;
+}
+
+pre {
+    background: #111;
+    color: #eee;
+    padding: 14px;
+    border-radius: 6px;
+    overflow-x: auto;
+}
+
+a {
+    color: #2563eb;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.note {
+    background: #f1f5f9;
+    padding: 12px;
+    border-left: 4px solid #2563eb;
+    border-radius: 4px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h3>mxy.sh</h3>
+
+assembly development server <br><br>
+
+<h1>Access Request</h1>
+
+<p>Request access using the form below:</p>
+
+<p>
+<a href="https://docs.google.com/forms/d/e/1FAIpQLSfuEUDanZC4nvMou2XN1WcuEvXi4SlPVN7r6rwU8n84aUnHvA/viewform?usp=dialog">
+Access Request Form
+</a><br><br>
+
+</p>
+
+<div class="note">
+<b>You'll need an SSH key</b>
+<p>It takes 2 minutes and you shouldn't need to install anything. Here's how to do it if you haven't done it before:</p>
+</div>
+
+<h2>Generate an SSH Key</h2>
+<p>To generate one on Windows/Mac:</p>
+
+<p><b>1. Open PowerShell/Terminal, and type:</b></p>
+
+<pre>ssh-keygen -t ed25519</pre><br>
+
+<p><b>2. Press Enter through the steps to accept default settings.</b> This will automatically create the public key at:</p>
+
+<pre>~/.ssh/id_ed25519.pub</pre>
+
+<p>If you already have an SSH key for a different service from before, choose a different filename when prompted, such as: <code>~/.ssh/mxy</code></p>
+<br>
+
+<p><b>3. Display your public key.</b> Use whatever name you chose if you didn't go with the default:</p>
+
+<pre>cat ~/.ssh/id_ed25519.pub OR cat ~/.ssh/mxy.pub</pre><br>
+
+<p><b>4. Copy and paste the public key to the <a href="https://docs.google.com/forms/d/e/1FAIpQLSfuEUDanZC4nvMou2XN1WcuEvXi4SlPVN7r6rwU8n84aUnHvA/viewform?usp=dialog">
+Access Request Form
+</a>.</b></p>
+<br>
+
+<div class="note">
+<b>Important</b>
+<p>Your public key should be one line, and should look like this: <pre><code>ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILX5sw3XKdHscJF3+9P0uneiAOytqcNyajq5n7+jVu+Z user@computername</code></pre>
+If you see anything labeled "PRIVATE KEY" then do not share this with me or anyone. We only want the public key! Should look like one long string with some spaces, not a block/paragraph. The block/paragraph is the private key, for your eyes only. This will serve as the proof that you are you.</p>
+</div>
+
+<br>
+<p>Once you submit the form, you'll receive an email when approved! After that you will be able to connect with: <pre>ssh yourusername@mxy.sh</pre></p>
+<br>
+
+<p>If you used a custom SSH filename, then you need to tell SSH where to find it, like this:</p>
+
+<pre>ssh @mxy.sh -i ~/.ssh/mxy.pub</pre>
+
+<h2>Troubleshooting</h2>
+
+<p>If you can't locate your SSH public key, then you should check to make sure the .pub file is in the <i>~/.ssh/ directory.</i> You can place it anywhere once you know the path. Usually it makes the most sense to put it in <i>~/.ssh</i>.</p>
+
+<p><b>If you don't specify the full path when making the key,</b> it will go into whatever directory you happened to be in (<i>likely ~, which on Windows means C:\Users\</i>)</p>
+
+<p><b>Sometimes the easiest thing is to</b> simply make the key in the default directory when you get into PowerShell:</p>
+
+<p><b>1. Open PowerShell, and then enter:<pre>ssh-keygen -t ed25519</pre></b></p>
+
+<p>and then it'll ask what filename you want to use. You can use `mxy` or `asm` or whatever filename you like. Then press Enter, no need to enter a passphrase, but you can. After that's all done, the `mxy.pub` will be right there in that same directory -- the same one that PowerShell goes into by default.</p>
+
+<p><b>2. Type `cat mxy.pub` and there's your key!</b></p>
+
+<p>If `ssh-keygen` doesn't work, then you might need to install OpenSSH. If you have any issues, please email me at "MxyAhoy" at gmail, and we will get it worked out! You can also message me on Discord or Reddit using the same handle.</p>
+
+</body>
+</html>
